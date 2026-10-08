@@ -5,17 +5,14 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/KhALiLXD/agento-runtime.git"
   },
-
   "homepage": "https://github.com/KhALiLXD/agento-runtime#readme",
-
   "bugs": {
     "url": "https://github.com/KhALiLXD/agento-runtime/issues"
   },
-
   "keywords": [
     "ai",
     "agent",
@@ -30,7 +27,6 @@
     "tool-calling",
     "typescript"
   ],
-
   "files": [
     "dist"
   ],
@@ -38,6 +34,10 @@
     ".": {
       "types": "./dist/v2/index.d.ts",
       "import": "./dist/v2/index.js"
+    },
+    "./openapi": {
+      "types": "./dist/openapi/index.d.ts",
+      "import": "./dist/openapi/index.js"
     }
   },
   "scripts": {
@@ -54,7 +54,8 @@
     "demo:booking": "npm run build && node examples/v2/demo.mjs booking",
     "example:travel": "npm run build && npm --prefix examples/travel-agent start",
     "example:discord": "npm run build && npm --prefix examples/discord-bot start",
-    "example:console": "npm run build && node examples/console.mjs"
+    "example:console": "npm run build && node examples/console.mjs",
+    "test:openapi": "npm run build && node --test tests/v2/openapi.test.mjs"
   },
   "publishConfig": {
     "access": "public"
@@ -75,5 +76,8 @@
   "type": "module",
   "engines": {
     "node": ">=20.11.0"
+  },
+  "bin": {
+    "agento-openapi": "dist/openapi/cli.js"
   }
 }

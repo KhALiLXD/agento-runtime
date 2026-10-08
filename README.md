@@ -364,3 +364,13 @@ The MPL-2.0 allows AGENTO to be used in larger applications while requiring modi
 ---
 
 **The model interprets. AGENTO controls execution. Your API authorizes.**
+
+## Generate a config from OpenAPI
+
+The optional `agento-runtime/openapi` entry point converts OpenAPI 3.0/3.1 JSON or YAML to a reviewable AGENTO-native config. It runs before the runtime and performs no API or model calls.
+
+```bash
+agento-openapi openapi.yaml --output config.yml
+```
+
+See [OpenAPI generator](docs/OPENAPI_GENERATOR.md) for programmatic use, supported mappings, and explicit failure cases.

@@ -1,0 +1,70 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "Catalog API", "version": "1.0.0" },
+  "servers": [{ "url": "https://api.example.com/v1" }],
+  "paths": {
+    "/items/{id}": {
+      "parameters": [{ "$ref": "#/components/parameters/ItemId" }],
+      "get": {
+        "operationId": "getItem",
+        "summary": "Get an item",
+        "parameters": [
+          { "name": "locale", "in": "query", "schema": { "type": "string" } },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": { "type": "array", "items": { "type": "string" } }
+          }
+        ],
+        "responses": { "200": { "description": "Item details" } }
+      },
+      "delete": {
+        "operationId": "deleteItem",
+        "summary": "Delete an item",
+        "security": [{ "BearerAuth": [] }],
+        "responses": { "204": { "description": "Deleted" } }
+      }
+    },
+    "/items": {
+      "post": {
+        "operationId": "createItem",
+        "summary": "Create an item",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/NewItem" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Created" } }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "ItemId": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "schema": { "type": "string", "minLength": 1 }
+      }
+    },
+    "schemas": {
+      "NewItem": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "details": {
+            "type": "object",
+            "properties": { "active": { "type": "boolean" } },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "securitySchemes": { "BearerAuth": { "type": "http", "scheme": "bearer" } }
+  }
+}
