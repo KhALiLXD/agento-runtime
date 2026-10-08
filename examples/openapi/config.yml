@@ -1,0 +1,125 @@
+# Generated from OpenAPI. Review before use.
+tools:
+  - behavior:
+      confirmation:
+        required: true
+      effect: side-effect
+    id: createItem
+    request:
+      auth:
+        type: none
+      map:
+        body:
+          details: $.body.details
+          name: $.body.name
+        headers: {}
+        path: {}
+        query: {}
+      method: POST
+      url: https://api.example.com/v1/items
+    tool:
+      description: Create an item
+      input_schema:
+        additionalProperties: false
+        properties:
+          body:
+            additionalProperties: false
+            properties:
+              details:
+                additionalProperties: false
+                properties:
+                  active:
+                    type: boolean
+                type: object
+              name:
+                minLength: 1
+                type: string
+            required:
+              - name
+            type: object
+        required:
+          - body
+        type: object
+      title: Create an item
+  - behavior:
+      confirmation:
+        required: false
+      effect: read-only
+    id: getItem
+    request:
+      auth:
+        type: none
+      map:
+        body: {}
+        headers: {}
+        path:
+          id: $.path.id
+        query:
+          fields: $.query.fields
+          locale: $.query.locale
+      method: GET
+      url: https://api.example.com/v1/items/{id}
+    tool:
+      description: Get an item
+      input_schema:
+        additionalProperties: false
+        properties:
+          path:
+            additionalProperties: false
+            properties:
+              id:
+                minLength: 1
+                type: string
+            required:
+              - id
+            type: object
+          query:
+            additionalProperties: false
+            properties:
+              fields:
+                items:
+                  type: string
+                type: array
+              locale:
+                type: string
+            required: []
+            type: object
+        required:
+          - path
+        type: object
+      title: Get an item
+  - behavior:
+      confirmation:
+        required: true
+      effect: destructive
+    id: deleteItem
+    request:
+      auth:
+        type: session
+      map:
+        body: {}
+        headers: {}
+        path:
+          id: $.path.id
+        query: {}
+      method: DELETE
+      url: https://api.example.com/v1/items/{id}
+    tool:
+      description: Delete an item
+      input_schema:
+        additionalProperties: false
+        properties:
+          path:
+            additionalProperties: false
+            properties:
+              id:
+                minLength: 1
+                type: string
+            required:
+              - id
+            type: object
+        required:
+          - path
+        type: object
+      title: Delete an item
+version: "2"
