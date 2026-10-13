@@ -57,12 +57,13 @@ const failure = (doc, code, options) => {
 
 test("JSON/YAML generate the same native config and local refs resolve", () => {
   const json = success(generate(fixture));
+  // Git may check out the fixture with CRLF on Windows; preserve every other byte.
   assert.equal(
     json.yaml,
     readFileSync(
       new URL("../../examples/openapi/config.yml", import.meta.url),
       "utf8",
-    ),
+    ).replace(/\r\n/g, "\n"),
   );
   const yaml = success(generateConfig(stringify(fixture)));
   assert.deepEqual(json, yaml);
