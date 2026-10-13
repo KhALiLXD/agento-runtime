@@ -353,6 +353,9 @@ npm pack --dry-run
 
 AGENTO is ESM-only and requires Node.js 20.11 or newer.
 
+Maintainers: follow [the release guide (Arabic)](docs/RELEASING.md) to version,
+verify, publish to npm, tag the source, and update the documentation site.
+
 ---
 
 ## License
