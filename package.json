@@ -1,6 +1,6 @@
 {
   "name": "agento-runtime",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "AGENTO: a schema-driven AI agent runtime for existing REST APIs",
   "main": "dist/index.js",
   "module": "dist/index.js",
