@@ -4,7 +4,7 @@
 
 AGENTO compiles declarative API definitions into model-facing tools and a separate execution registry. The runtime owns validation, dependency data flow, sessions, credential transport, confirmation, HTTP policy and errors. Models select a shortlisted tool and extract user arguments.
 
-This branch is a **2.0.0-alpha.2 implementation**, not a claim that every deployment is production certified. The scoped package name `agento-runtime` is prepared locally; it has not been published or checked for registry ownership. Node 20.11+ is required. Coverage commands require a recent Node release (verified on Node 24).
+The npm package is `agento-runtime`. Read `package.json` for this checkout's package version and `npm view agento-runtime dist-tags --json` for published release channels. The native configuration format is V2, independently of the npm version. Node 20.11+ is required. Coverage commands require a recent Node release (verified on Node 24).
 
 ## Start
 
@@ -137,6 +137,7 @@ A bare “yes” cannot confirm an action. Confirmation IDs are scoped to the cu
 
 ## Guides
 
+- [Publishing updates to npm (Arabic maintainer guide)](RELEASING.md)
 - [Architecture and implementation decisions](ARCHITECTURE.md)
 - [Configuration, dependencies, mapping and errors](CONFIGURATION.md)
 - [Authentication, sessions and production operation](SECURITY-OPERATIONS.md)
